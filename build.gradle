@@ -1,6 +1,10 @@
 plugins {
     id 'java'
+    id 'maven-publish'
+    id 'signing'
 }
+
+
 archivesBaseName = 'core'
 group 'org.eazyssh'
 version '1.0.0'
@@ -31,4 +35,52 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId = group
+            artifactId = archivesBaseName
+            version = version
+            from components.java
+
+            pom {
+                name = archivesBaseName
+                description = 'Highly-customizable Framework for simplifying SSH interactions.'
+                url = 'https://github.com/bytes-chaser/eazy-ssh-core'
+                inceptionYear = '2022'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'bytes-chaser'
+                        email = 'eazy.ssh@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/bytes-chaser/eazy-ssh-core.git'
+                    developerConnection = 'scm:git:ssh://github.com:/bytes-chaser/eazy-ssh-core'
+                    url = 'https://github.com/bytes-chaser/eazy-ssh-core'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
