@@ -6,7 +6,7 @@ plugins {
 
 
 archivesBaseName = 'core'
-group 'org.eazyssh'
+group 'io.github.bytes-chaser'
 version '1.0.0'
 
 repositories {
@@ -41,13 +41,19 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
 
-            groupId = group
-            artifactId = archivesBaseName
-            version = version
+            artifactId = 'core'
             from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
 
             pom {
-                name = archivesBaseName
+                name = 'eazy-ssh'
                 description = 'Highly-customizable Framework for simplifying SSH interactions.'
                 url = 'https://github.com/bytes-chaser/eazy-ssh-core'
                 inceptionYear = '2022'
