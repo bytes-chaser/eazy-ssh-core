@@ -1,6 +1,9 @@
 package org.essh;
 
-class MethodNameCommandParser implements CommandParser {
+/**
+ * Parsing command based on method declaration syntax
+ */
+final class MethodNameCommandParser implements CommandParser {
 
     final String name;
 

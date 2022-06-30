@@ -1,8 +1,18 @@
 package org.essh;
 
+/**
+ * Utils for translating method declaration arguments into SSH execution settings
+ */
 class Parameters {
 
-    public static ConnectionData parse(ESSHContextFull context, Object[] args) {
+    /**
+     * SSH resulting settings from {@link ESSHContext} and method call arguments
+     *
+     * @param context {@link ESSHContext}
+     * @param args    method call arguments
+     * @return @{@link ConnectionData} details
+     */
+    public static ConnectionData connectionData(ESSHContextFull context, Object[] args) {
 
         int length = args == null ? -1 : args.length;
 

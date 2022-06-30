@@ -1,5 +1,8 @@
 package org.essh;
 
+/**
+ * Parsing SSH command based on {@link Exec} annotation details
+ */
 final class ExecCommandParser implements CommandParser {
 
     final Exec exec;
@@ -12,7 +15,7 @@ final class ExecCommandParser implements CommandParser {
 
     @Override
     public String[] parse() {
-        String[] commands = exec.value();
+        String[] commands = exec.commands();
         for (int i = 0; i < commands.length; i++) {
             commands[i] = commands[i] + "\n";
         }

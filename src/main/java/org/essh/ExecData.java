@@ -1,6 +1,8 @@
 package org.essh;
 
-
+/**
+ * Settings for {@link SSH} implementation
+ */
 public class ExecData {
 
     ConnectionData connectionData;

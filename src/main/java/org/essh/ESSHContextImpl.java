@@ -22,13 +22,13 @@ public class ESSHContextImpl implements ESSHContextFull {
     private final Map<String, ESSHParser<?>> parser = new HashMap<>();
 
 
-    public ESSHContextImpl addClient(Class<? extends ESSHClient> client) {
+    public ESSHContextImpl register(Class<? extends ESSHClient> client) {
         clients.add(client);
         return this;
     }
 
 
-    public <T> ESSHContextImpl addParser(Class<T> outputType, ESSHParser<T> parser) {
+    public <T> ESSHContextImpl parser(Class<T> outputType, ESSHParser<T> parser) {
         this.parser.put(outputType.getName(), parser);
         return this;
     }
@@ -49,6 +49,8 @@ public class ESSHContextImpl implements ESSHContextFull {
 
     @SuppressWarnings("unchecked")
     public <T extends ESSHClient> T client(Class<T> esshClass) {
+        if (!proxies.containsKey(esshClass))
+            throw new IllegalArgumentException("Unknown SSH client of class" + esshClass.getName());
         return (T) proxies.get(esshClass);
     }
 
