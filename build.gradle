@@ -3,7 +3,7 @@ plugins {
 }
 archivesBaseName = 'core'
 group 'org.eazyssh'
-version '1.0'
+version '1.0.0'
 
 repositories {
     mavenCentral()
@@ -16,4 +16,19 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    archiveClassifier = "javadoc"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    archiveClassifier = "source"
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
 }
