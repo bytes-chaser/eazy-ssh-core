@@ -1,4 +1,4 @@
-package org.essh;
+package io.github.bytes_chasser;
 
 /**
  * SSH commands parsers.

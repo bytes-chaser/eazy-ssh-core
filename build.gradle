@@ -1,11 +1,10 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
     id 'signing'
 }
 
-
-archivesBaseName = 'core'
+archivesBaseName = 'eazy-ssh-core'
 group 'io.github.bytes-chaser'
 version '1.0.0'
 
@@ -22,26 +21,21 @@ test {
     useJUnitPlatform()
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    from javadoc.destinationDir
-    archiveClassifier = "javadoc"
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    from sourceSets.main.allSource
-    archiveClassifier = "source"
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
 
-            artifactId = 'core'
+            artifactId = archivesBaseName
             from components.java
             versionMapping {
                 usage('java-api') {
@@ -79,10 +73,13 @@ publishing {
         }
     }
 
+
     repositories {
         maven {
-            name = "OSSRH"
+            name = "OSS"
             url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials.username = ossUsername
+            credentials.password = ossPassword
         }
     }
 }

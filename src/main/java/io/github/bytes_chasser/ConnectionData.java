@@ -1,4 +1,4 @@
-package org.essh;
+package io.github.bytes_chasser;
 
 /**
  * DTO containing SSH Connection Data

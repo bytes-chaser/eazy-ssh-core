@@ -1,4 +1,4 @@
-package org.essh;
+package io.github.bytes_chasser;
 
 /**
  * Parsing command based on method declaration syntax

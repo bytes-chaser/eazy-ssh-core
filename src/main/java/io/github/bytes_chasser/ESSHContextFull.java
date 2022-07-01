@@ -1,4 +1,4 @@
-package org.essh;
+package io.github.bytes_chasser;
 
 /**
  * Extension for {@link ESSHContext} used for accessing context data by {@link ESSHClientProxy} in the runtime

@@ -1,4 +1,4 @@
-package org.essh;
+package io.github.bytes_chasser;
 
 /**
  * Utils for translating method declaration arguments into SSH execution settings
