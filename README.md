@@ -1,8 +1,14 @@
 # eazy-ssh-core
 Highly-customizable Framework for simplifying SSH interactions.
 
-## Adding
-### Maven
+## Adding into project
+### Ready-to-go implementations.
+Select which implementation suits you better and check its page for getting a dependency declaration for it.
+* [JSch](https://github.com/bytes-chaser/eazy-ssh-jsch) (over [ JSch library mwiede fork](https://github.com/mwiede/jsch))
+
+### Core only
+If you just want to install core to create your own extentions use these dependency declarations. 
+#### Maven
 ```xml
 <!-- https://mvnrepository.com/artifact/io.github.bytes-chaser/eazy-ssh-core -->
 <dependency>
@@ -11,14 +17,11 @@ Highly-customizable Framework for simplifying SSH interactions.
     <version>1.0.0</version>
 </dependency>
 ```
-### Gradle
+#### Gradle
 ```gradle
 // https://mvnrepository.com/artifact/io.github.bytes-chaser/eazy-ssh-core
 implementation 'io.github.bytes-chaser:eazy-ssh-core:1.0.0'
 ```
-
-## Implementations
-* [JSch](https://github.com/bytes-chaser/eazy-ssh-jsch) (over [ JSch library mwiede fork](https://github.com/mwiede/jsch))
 
 ## Usage
 ### Context (ESSHContext)
